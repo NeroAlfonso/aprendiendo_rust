@@ -1,4 +1,5 @@
 use std::io;
+use rand::Rng;
 struct Attack
 {
     command:        u8,
@@ -108,8 +109,16 @@ fn main()
     }
     fn batman_attack(mut me_hp: i16) -> i16
     {
-        println!("¡Batman te ha guiñado el ojo! (-5HP)");
-        me_hp -=10;
+        let probability : i16= 20;
+        let critical :i16 =rand::thread_rng().gen_range(1..100);
+        let mut multiplier : i16 =1;
+        let damage : i16 =5;
+        if critical <=probability
+        {
+            multiplier =8;
+        }
+        me_hp -=damage*multiplier;
+        println!("¡Batman te ha guiñado el ojo! (-{}HP)", damage*multiplier);
         return me_hp;
     }
 }
