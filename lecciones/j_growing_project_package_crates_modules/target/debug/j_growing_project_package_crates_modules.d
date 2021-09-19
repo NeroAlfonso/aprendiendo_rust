@@ -1,0 +1,1 @@
+/home/nerioalfonso/Workspace/curso_rust/j_growing_project_package_crates_modules/target/debug/j_growing_project_package_crates_modules: /home/nerioalfonso/Workspace/curso_rust/j_growing_project_package_crates_modules/src/main.rs
