@@ -151,9 +151,3 @@ match guess.cmp(&secret_number) //se evalua en valor que retorna la función cmp
 `  
 - Con el método "cmp" podemos comparar una dos valores (de tipos compatibles), el resultado será una enumeración (enum) de tipo Ordering
 - La ennumeración la manejaremos con un bloque match, donde en función de cada opción adoptaremos uno u otro comportamiento
-
-## Sub-título
-`
-Código
-`  
-*Nota*
