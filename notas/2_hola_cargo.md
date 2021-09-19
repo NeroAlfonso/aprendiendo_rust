@@ -49,3 +49,7 @@ También se ha generado un archivo *Cargo.lock* con las dependencias exactas usa
 > cargo build --release
 `  
 Para cuando termine la ejecución de la instrucción se habrá generado un archivo *target/release/b_hello_cargo* o *...rgo.exe* en Windows.
+`
+> cargo doc --open
+`  
+Te muestra la documentación del proyecto en cuestión.

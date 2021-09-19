@@ -85,12 +85,37 @@ let mut guess =String::new();
 `
     let secret_number =10; //por defecto es un u32 (valores de 32 bits sin signo)
 `
+- Las variables pueden ser sombreadas (shadowing), que es lo mismo que ser redefinidas en función de la utilidad que podamos ver en ellas como evitar variables auxiliares. Ahondado mas adelante
+`
+let guess: &str;
+let guess: u32;
+`
 ## Rand
 Librería (library crate) que usaremos para generar números aleatorios. Se debe agregar a nuestras dependencias en *c_guess_game/Cargo.toml*
+- Usaremos el rasgo (trait) Rng para generar números aleatorios, los rasgos se ahondarán mas adelante
 `
-Código
+let secret_number =rand::thread_rng().gen_range(1..101);
 `  
-*Nota*
+*Este método genera un número en un rango inclusivo..exclusivo dado*
+
+## Loop
+Corresponde a un bucle infinito, a menos que lo detengas con "break". Para saltar a la siguiente iteración puedes usar "continue". Mas adelante, mas sobre loop.
+`
+    loop
+    {
+        ...
+        if ...
+        {
+            continue;
+        }
+        ...
+        ...
+        if ...
+        {
+            break;
+        }
+    }
+`
 ## Std
 Librería que usaremos para manejar la entrada estandar desde la terminal.  
 `
@@ -100,6 +125,32 @@ io::stdin().read_line(&mut guess).expect("Failed to read line");
 - Con .read_line(&mut guess) podemos leer lo que se ha escrito en al terminal y asignarlo a una variable, que será la del parámetro o mas bien a la referencia (&) de una variables. Este método también retorna una enumeración (enums) de tipo "Result", que nos permite evaluar dos posibles valores "Ok" y "Err", donde "Ok" es acompañada del valor recibido.
 - La enumeración "Result" tiene un método llamado "expect" que cierra el programa y muestra un mensaje provisto como parámetro, manejando el error producido, hasta cierto punto.
 - Las referencias al igual que las variables son inmutables, de desear el comportamiento opuesto se debe proveer la palabra reservada "mut"
+
+## Parse
+`
+guess.trim().parse()
+`  
+En esta línea estamos eliminando los espacios en blanco y tratando de convertirlo a númerico, el retorno del método parse es una enumeración Result, por lo que podemos usar su método expect para manejar el error o usar un match para evaluarlo mas detenidamente.
+
+## Enum Ordering
+Enumeración que usaremos para determinar si el resultado de una comparación es igual, sobrepasa o es menor al otro valor.
+`
+match guess.cmp(&secret_number) //se evalua en valor que retorna la función cmp
+        //que recibe una referencia (&) a la variable secret_number
+        //el retorno es un enum tipo Ordering
+        {
+            Ordering::Less =>println!("Too small!"), //si es menor
+            Ordering::Greater =>println!("Too big!"), //si es mayor
+            Ordering::Equal => //si es el numero exacto
+            {
+                println!("You win!");
+                break; //rompe el bucle, evitando la ejecución de una nueva partida 
+                //(volver a pedir un numero para tratar de predecir el valor secreto)
+            }
+        }
+`  
+- Con el método "cmp" podemos comparar una dos valores (de tipos compatibles), el resultado será una enumeración (enum) de tipo Ordering
+- La ennumeración la manejaremos con un bloque match, donde en función de cada opción adoptaremos uno u otro comportamiento
 
 ## Sub-título
 `

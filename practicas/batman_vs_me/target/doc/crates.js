@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["batman_vs_me"];
