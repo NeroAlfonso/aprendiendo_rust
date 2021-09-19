@@ -32,11 +32,16 @@ fn main()
     {
         println!("Batman {} <3", batman_hp);
         println!("Tu {} <3", me_hp);
-        if batman_hp <=0 {
+        if batman_hp <=0 && me_hp <=0
+        {
+            println!("¡Empate¡ Gordón viene en camino, has perdido");
+            break;
+        }
+        else if batman_hp <=0 {
             println!("¡Batman ha caido!");
             break;
         }
-        if me_hp <=0 {
+        else if me_hp <=0 {
             println!("¡Has caido!");
             break;
         }
@@ -67,7 +72,7 @@ fn main()
         let mut index : usize =me_attacks.len();
         let attack_input : Option<&Attack> = loop {
             let att : &Attack = &me_attacks[(index-1)];
-            if(att.command ==attack_input_command)
+            if att.command ==attack_input_command
             {
                 break Some(att);
             }
@@ -81,10 +86,19 @@ fn main()
             println!("¡Has fallado el ataque!");
             continue;
         }
+        else if 
+            (attack_input.is_some() && me_last_attack.is_some())
+            &&
+            (attack_input.unwrap().command == me_last_attack.unwrap().command)
+        {
+            println!("¡Has fallado el ataque!");
+            continue;
+        }
         else
         {
             println!("¡Has propinado un/a {} a Batman! (-{}HP)", attack_input.unwrap().description, attack_input.unwrap().damage);
             batman_hp -=attack_input.unwrap().damage;
+            me_last_attack =attack_input;
         }
         continue;
     }
@@ -95,7 +109,7 @@ fn main()
     fn batman_attack(mut me_hp: i16) -> i16
     {
         println!("¡Batman te ha guiñado el ojo! (-5HP)");
-        me_hp -=5;
+        me_hp -=10;
         return me_hp;
     }
 }
