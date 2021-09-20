@@ -92,4 +92,3 @@ Los tipos compuestos son tipos de datos que contienen multiples valores. Rust cu
     println!("indice uno: {}", array[1]);
 `  
 - Entra en panico si se trata de acceder un indice que no existe.  
-*Plus: practicas/batmam_vs_me_4_2*  
