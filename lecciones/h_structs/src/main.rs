@@ -1,4 +1,4 @@
-#[derive(Debug)] //agregando esta anotación jussto antes de la definición de la estructura (struct)
+#[derive(Debug)] //agregando esta anotación justo antes de la definición de la estructura (struct)
 //le damos el rasgo (trait) Debug a la misma, para que pueda formatearse en caso de querer imprimirla
 struct Rectangle 
 {

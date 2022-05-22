@@ -1,0 +1,1 @@
+/home/nerioalfonso/Workspace/curso_rust/lecciones/patio/target/debug/patio: /home/nerioalfonso/Workspace/curso_rust/lecciones/patio/src/jardin/vegetales.rs /home/nerioalfonso/Workspace/curso_rust/lecciones/patio/src/jardin.rs /home/nerioalfonso/Workspace/curso_rust/lecciones/patio/src/main.rs

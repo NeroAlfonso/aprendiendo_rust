@@ -7,7 +7,7 @@
     //==monton
     //menos veloz
     //almacena datos que estarán disponibles en tiempo de ejecución, o son de valor variable
-    //ingresar valores se denomina allocating (asignar
+    //ingresar valores se denomina allocating (asignar)
 fn main() {
     second_function();
     function_move();
@@ -29,7 +29,7 @@ fn second_function()
     foo.push_str(" juesjues"); //agrega substring al final del String
     println!("{}", foo);
 }//final del ambito 
-//foo está fuera del ambito, por lo tanto ha sido eliminado, y ssu memoria ha ssido liberada (drop).  Resource Acquisition Is Initialization (RAII)
+//foo está fuera del ambito, por lo tanto ha sido eliminado, y su memoria ha sido liberada (drop).  Resource Acquisition Is Initialization (RAII)
 //===interacción entre variables y datos===
     //==moverse (move)
     fn function_move()
@@ -40,7 +40,7 @@ fn second_function()
         //ya que por su disponibilidad en la pila (stack) la resolución de la operación es muy rápida
         //por lo que se omite la llamada al metodo .clone porque no hay diferencia apreciable entre 
         //copia profunda o superficial en este caso (deep copy and shallow copy)
-        //a esto se le conoce como rasgo de copia, y lo implementan todos loss tipos escalares y 
+        //a esto se le conoce como rasgo de copia, y lo implementan todos los tipos escalares y 
         //las tuplas (que usen tipos con el rasgo de copia)
         let bar =5;
         let foo =bar;
@@ -52,7 +52,7 @@ fn second_function()
         //double free error
         let x =String::from("Hello");
         let y =x;//a partir de aquí, Rust ya no considera x como valida
-        //similar a una copia superficial (shallow copy) pero Rut invalida la variable anterior
+        //similar a una copia superficial (shallow copy) pero Rust invalida la variable anterior
         //llamandole moverse (move)
         //println!("x {} y {}", x, y); //esta intrucción provocará un error
         println!("y {}", y);
@@ -81,7 +81,7 @@ fn ownership_and_functions()
     takes_ownership(s); //al pasar una variable a una función, esta actua de la misma forma
     //que la asignación de una variable a otra, en este caso aplica movere (move). Copia 
     //superficial (shallow copy) e invalidación de la variable anterior
-    //al sser un tipo String, todo esto ocurre en el montón
+    //al ser un tipo String, todo esto ocurre en el montón
     //println!("{}", s); //por lo tanto esta declaración provocará un error
     let i =10;
     makes_copy(i); //al entero ser un tipo escalar, tiene rasgo de copia, por lo tanto
@@ -142,7 +142,7 @@ fn references_and_borrowing()
     let s8 =&s6; //sin embargo dos referencias inmutables si están admitidas, debido a que no se
     //espera que ninguna cambie mientras se está leyendo
     //el alcance de las referencias van desde la línea donde se definieron hasta la ultima vez que
-    //se usaron, por ejemplo, sería un caso valida el siguiente código
+    //se usaron, por ejemplo, sería un caso valido el siguiente código
     let s9 =&s6;
     println!("{}", s9);
     let s10 =&mut s6;
